@@ -2,12 +2,12 @@
 
 by Md Hossain Shuvo, Debswapna Bhattacharya
 
-Codebase for our protein-protein interface quality estimation by EGNN, EquiRank.
+Codebase for our protein-protein interface quality estimation by pLM-informed EGNN, EquiRank.
 
 ![Workflow](./EquiRank.png)
 
 ### Environment
-PIQLE is tested on x86_64 Linux system in the following Python environment<br/>
+EquiRank is tested on x86_64 Linux system in the following Python environment<br/>
 1. python 3.6.13 <br/>
 2. dgl 0.9.0 <br/>
 3. torch 1.10.2 <br/>
@@ -49,9 +49,9 @@ Arguments:
   --esm2emb2 INESM2     ESM2 embeddings of chain2
   --out OUTDIR          Output directory.
 ```
-<b>Example commands to run PIQLE</b><br/>
+<b>Example commands to run EquiRank</b><br/>
 ```
-python PIQLE.py --tgt example --seq absolute_path/example/example.fasta --dec absolute_path/example/decoys/ --ch absolute_path/example/example.chain --msa1 absolute_path/example/msa/example_A.aln --msa2 absolute_path/example/msa/example_B.aln --a3m1 absolute_path/example/msa/example_A.a3m --a3m2 absolute_path/example/msa/example_B.a3m --out absolute_path/example_out/
+python EquiRank.py --tgt example --seq absolute_path/example/example.fasta --dec absolute_path/example/decoys/ --ch absolute_path/example/example.chain --msa1 absolute_path/example/example_A.aln --msa2 absolute_path/example/example_B.aln --a3m1 absolute_path/example/example_A.a3m --a3m2 absolute_path/example/example_B.a3m --collabmsa1 absolute_path/example/example_A.fastamsa_first_row.npy --collabmsa2 absolute_path/example/example_B.fastamsa_first_row.npy --esm2emb1 absolute_path/example/example_A_esm.npy --esm2emb2 absolute_path/example/example_A_esm.npy --out absolute_path/example_out/
 ```
 Please see the output ```example/example.EquiRank``` of the above example command.<br/><br/>
 <b>Argument descriptions</b><br/><br/>
@@ -60,9 +60,13 @@ Please see the output ```example/example.EquiRank``` of the above example comman
 * --seq FASTAFILE: fasta file containing both of the sequences of the complex. Should be exactly in the same order as the chain order in the PDB. Please see ```example/example.fasta``` <br/>
 * --dec DECOYDIR: directory containing ONLY complex pdb files. Please see ```example/decoys``` <br/>
 * --ch CHAINFILE: chain identifier of the complex. Only one line with chain ids seperated by space. Should be exactly in the same order as the chain order in the PDB. Please see ```example/example.chain``` <br/>
-* --msa1 INMSA1: multiple sequence alignment (e.g. '.aln file') of the first chain in the complex. Please see ```example/msa/example_A.aln``` <br/>
-* --msa2 INMSA2: multiple sequence alignment (e.g. '.aln file') of the second chain in the complex. Please see ```example/msa/example_B.aln``` <br/>
-* --a3m1 INA3M1: A3M of chain1 (e.g. '.a3m file') of the first chain in the complex. Please see ```example/msa/example_A.a3m``` <br/>
-* --a3m2 INA3M2: A3M of chain2 (e.g. '.a3m file') of the second chain in the complex. Please see ```example/msa/example_B.a3m``` <br/>
+* --msa1 INMSA1: multiple sequence alignment (e.g. '.aln file') of the first chain in the complex. Please see ```example/example_A.aln``` <br/>
+* --msa2 INMSA2: multiple sequence alignment (e.g. '.aln file') of the second chain in the complex. Please see ```example/example_B.aln``` <br/>
+* --a3m1 INA3M1: A3M of chain1 (e.g. '.a3m file') of the first chain in the complex. Please see ```example/example_A.a3m``` <br/>
+* --a3m2 INA3M2: A3M of chain2 (e.g. '.a3m file') of the second chain in the complex. Please see ```example/example_B.a3m``` <br/>
+* --collabmsa1 INCOLAB1 ColabFold distilled MSA (e.g. '.fastamsa_first_row.npy file') of the first chain in the complex. Please see ```example/example_A.fastamsa_first_row.npy``` <br/>
+* --collabmsa2 INCOLAB2 ColabFold distilled MSA (e.g. '.fastamsa_first_row.npy file') of the second chain in the complex. Please see ```example/example_B.fastamsa_first_row.npy``` <br/>
+* --esm2emb1 INESM1 ESM2 embeddings (e.g. '.esm.npy file') of the first chain in the complex. Please see ```example/example_A_esm.npy``` <br/>
+* --esm2emb2 INESM2 ESM2 embeddings (e.g. '.esm.npy file') of the second chain in the complex. Please see ```example/example_B_esm.npy``` <br/>
 * --out OUTDIR: output directory. IMPORTANT: an output directory will be created, if it does not already exist.
 
