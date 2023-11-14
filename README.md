@@ -2,7 +2,7 @@
 
 by Md Hossain Shuvo, Debswapna Bhattacharya
 
-Codebase for our protein-protein interface quality estimation by EGNN, PIQLE.
+Codebase for our protein-protein interface quality estimation by EGNN, EquiRank.
 
 ![Workflow](./EquiRank.png)
 
