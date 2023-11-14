@@ -82,11 +82,11 @@ parser.add_argument('--a3m2', dest='inA3m2',
 
 parser.add_argument('--collabmsa1', dest='inColab1',
         default = '',    # default empty!
-        help = 'ColabFold generated MSA of chain1')
+        help = 'ColabFold distilled MSA of chain1')
 
 parser.add_argument('--collabmsa2', dest='inColab2',
         default = '',    # default empty!
-        help = 'ColabFold generated MSA of chain2')
+        help = 'ColabFold distilled MSA of chain2')
 
 parser.add_argument('--esm2emb1', dest='inEsm1',
         default = '',    # default empty!
@@ -1725,9 +1725,13 @@ def finalizeScore():
             global_score_average_omega = sum(indiv_score_omega) / len(indiv_score_omega)
             composite = (global_score_average_dist + global_score_average_lambda + global_score_average_lambdar + \
             global_score_average_tau + global_score_average_taur + global_score_average_omega) / 6
+            '''
             outFile.write(decoys[d] + ' ' + str(global_score_average_dist) + ' ' + str(global_score_average_lambda) +
                           ' ' + str(global_score_average_lambdar) + ' ' + str(global_score_average_tau) +
                           ' ' + str(global_score_average_taur) + ' ' + str(global_score_average_omega) + ' ' + str(composite) + '\n')
+            '''
+
+            outFile.write(decoys[d] + ' ' + str(composite) + '\n')
     
     outFile.close()
     #sort the score file#
