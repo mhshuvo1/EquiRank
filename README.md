@@ -1,1 +1,1 @@
-# EquiRank: Improved protein-protein interface quality estimation using Equivariant Graph Neural Network (EGNN)
+# EquiRank: improved protein-protein interface quality estimation using protein-language-model-informed Equivariant Graph Neural Network (EGNN)
